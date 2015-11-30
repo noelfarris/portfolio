@@ -12,6 +12,7 @@ module.exports = React.createClass({
 	componentWillMount: function() {
 	      var query = new Parse.Query(PostModel);
 	      query.equalTo('user', new Parse.User({objectId: this.props.userId}));
+	      query.descending('createdAt')
 	      query.find()
 	      .then(
 	      	(posts) => {
